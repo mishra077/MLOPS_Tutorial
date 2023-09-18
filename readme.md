@@ -78,3 +78,5 @@ Key components:
  - Validation
  
  :point_right:In this tutorial we are using Pandas as the dataset is small, but for large volumes of data we can use Spark.
+
+[ ![](Hopsworks-api-1.jpg) ](Hopsworks-api-1.jpg)
