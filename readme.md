@@ -14,7 +14,7 @@ This tutorial is spread in 7 lessons:
 |Private PyPi Server. Orchestrate Everything with Airflow|[Link](https://medium.com/towards-data-science/unlocking-mlops-using-airflow-a-comprehensive-guide-to-ml-system-orchestration-880aa9be8cff)|
 |Data Validation for Quality and Integrity using GE. Model Performance Continuous Monitoring|[Link](https://towardsdatascience.com/ensuring-trustworthy-ml-systems-with-data-validation-and-real-time-monitoring-89ab079f4360)|
 |Consume and Visualize your Model’s Predictions using FastAPI and Streamlit. Dockerize Everything|[Link](https://medium.com/towards-data-science/fastapi-and-streamlit-the-python-duo-you-must-know-about-72825def1243)|
-|Deploy All the ML Components to GCP. Build a CI/CD Pipeline Using Github Actions|[Link]("https://medium.com/towards-data-science/seamless-ci-cd-pipelines-with-github-actions-on-gcp-your-tools-for-effective-mlops-96f676f72012")|
+|Deploy All the ML Components to GCP. Build a CI/CD Pipeline Using Github Actions|[Link](https://medium.com/towards-data-science/seamless-ci-cd-pipelines-with-github-actions-on-gcp-your-tools-for-effective-mlops-96f676f72012)|
 
 By the end of all the lessons we will be able to create, implement and deploy a production level Machine Learning Pipeline.
  <br>
