@@ -3,6 +3,8 @@ This tutorial is directly referenced from the **[FULL STACK 7-STEPS MLOPS FRAMEW
 
 > Written with [StackEdit](https://stackedit.io/).
 
+  
+
 ## Introduction
 
 This tutorial is spread in 7 lessons:
@@ -16,17 +18,19 @@ This tutorial is spread in 7 lessons:
 |Consume and Visualize your Model’s Predictions using FastAPI and Streamlit. Dockerize Everything|[Link](https://medium.com/towards-data-science/fastapi-and-streamlit-the-python-duo-you-must-know-about-72825def1243)|
 |Deploy All the ML Components to GCP. Build a CI/CD Pipeline Using Github Actions|[Link](https://medium.com/towards-data-science/seamless-ci-cd-pipelines-with-github-actions-on-gcp-your-tools-for-effective-mlops-96f676f72012)|
 
+
 By the end of all the lessons we will be able to create, implement and deploy a production level Machine Learning Pipeline.
- <br>
+<br>
+
 **What is the goal of the ML model ?**
 We will try to create a robust model to predict energy consumption levels for various consumer segments in Denmark over the next 24 hrs.
 
 ## Lesson-1
 
 ### Batch Serving
-As the name suggests **batch -** where given historical data we can use this data to train our ml models in batches. This training paradigm is called offline training. Predictions are computed using batch features by pinging an offline ML model and stored in blob storage or a bucket. 
+As the name suggests **batch -** where given historical data we can use this data to train our ml models in batches. This training paradigm is called offline training. Predictions are computed using batch features by pinging an offline ML model and stored in blob storage or a bucket.
 
-|Pros| Cons  |
+|Pros| Cons |
 |--|--|
 |**Efficient resource utilization**: resources are allocated for specific time periods, reducing the risk to resource contention.|**Latency**: high latency due to tasks execution in predefined intervals.|
 |**Handling large volumes of data**: commonly used for data warehousing, ETL (Extract, Transform, Load) processes, and data analytics.|**Staleness**: historical static data is processed in batches for use in features. Batches might run at scheduled intervals, or when computation resources are available. However, the data/features become stale, as changes in environment is much faster in real-time.|
@@ -41,26 +45,26 @@ A feature store is like a library for data features that are used in machine lea
 
 Components:
 
- - **Feature Collection**
- - **Catalog and metadata**: a feature store has a catalog that describes each feature. It includes the name of the feature and what it represents (e.g., customer age, product price) and how it's computed or transformed.
- - **Access and Usage**
- 
- Key features and functions:
- - Feature registration
- - Data Ingestion
- - Versioning
- - Feature Serving
- - Feature Catalog
- - Data consistency
- - Data monitoring
- - Caching and Performance Optimization
+-  **Feature Collection**
+-  **Catalog and metadata**: a feature store has a catalog that describes each feature. It includes the name of the feature and what it represents (e.g., customer age, product price) and how it's computed or transformed.
+-  **Access and Usage**
+
+Key features and functions:
+- Feature registration
+- Data Ingestion
+- Versioning
+- Feature Serving
+- Feature Catalog
+- Data consistency
+- Data monitoring
+- Caching and Performance Optimization
 
 Examples of feature stores used in the industry
 
- - GCP Vertex Feature Store
- - AWS Sagemaker Feature Store
- - Hopswork Feature Store ( we are using this for our tutorial coz its free :smile:)
- - ...
+- GCP Vertex Feature Store
+- AWS Sagemaker Feature Store
+- Hopswork Feature Store ( we are using this for our tutorial coz its free :smile:)
+- ...
 
 ### Feature Engineering Pipeline
 A sequence of data collection, cleansing, transformation, validation step following by loading into the feature store (like an ETL pipeline).
@@ -69,14 +73,64 @@ The primary objective of an ETL (Extract, Transform, Load) pipeline is to prepar
 
 Key components:
 
- - Data collection
- - Data cleaning
- - Feature Extraction/Transformation/Aggregation
- - Feature selection
- - Feature scaling
- - Feature encoding
- - Validation
- 
- :point_right:In this tutorial we are using Pandas as the dataset is small, but for large volumes of data we can use Spark.
+- Data collection
+- Data cleaning
+- Feature Extraction/Transformation/Aggregation
+- Feature selection
+- Feature scaling
+- Feature encoding
+- Validation
 
-[ ![](Hopsworks-api-1.jpg) ](Hopsworks-api-1.jpg)
+:point_right:In this tutorial we are using Pandas as the dataset is small, but for large volumes of data we can use Spark.
+
+## Setting up Environment
+### Feature Store
+- Create an account on [Hopsworks](https://app.hopsworks.ai/signup)
+- Start a new project ( :bulb: name your project differently as Hopsworks require unique name across its deployment )
+- Add a new API key
+- now from your project directory run `cp .env.default .env`
+- Fill newly generated Hopsworks API_KEY under ==FS_API_KEY== and your project name under ==FS_PROJECT_NAME== in `.env` file.
+
+*See the image below to generate your own Hopsworks API_KEY*
+
+[  ![](Hopsworks-api-1.jpg)  ](Hopsworks-api-1.jpg)
+
+  
+
+Set the ML_PIPELINE_ROOT_DIR variable:<br>
+
+`export ML_PIPELINE_ROOT_DIR=<your project path>`
+
+  
+
+### Docker installation
+
+:bulb: Refer to the links given below based on your OS
+
+- [Install Docker on Ubuntu](https://docs.docker.com/engine/install/ubuntu/#installation-methods)
+- [Install Docker on Windows](https://docs.docker.com/desktop/install/windows-install/)
+- [Install Docker on Mac](https://docs.docker.com/desktop/install/mac-install/)
+
+### Poetry installation
+
+:point_right: Please refer to this link better understanding [Poerty](https://favtutor.com/blogs/poetry-python)
+
+Install python systems dependencies:
+```bash
+sudo apt-get install -y python3-distutils
+```
+Download and install:
+```bash
+curl -sSL https://install.python-poetry.org | python3 -
+```
+Add poetry PATH to your shell configuration file:
+```bash
+nano ~/.zshrc
+```
+Append the line `export PATH=~/.local/bin:$PATH`
+
+Verify:
+```bash
+source ~/.zshrc
+poetry --version
+```
