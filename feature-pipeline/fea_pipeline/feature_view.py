@@ -4,8 +4,8 @@ from typing import Optional
 import fire
 import hopsworks
 
-from feature_pipeline import utils
-from feature_pipeline import settings
+from fea_pipeline import utils
+from fea_pipeline import settings
 import hsfs
 
 
@@ -85,7 +85,7 @@ def create(
 
     # Create feature view in the given feature group version.
     energy_consumption_fg = fs.get_feature_group(
-        "energy_consumption_denmark", version=feature_group_version
+        "energy_consumption", version=feature_group_version
     )
     ds_query = energy_consumption_fg.select_all()
     feature_view = fs.create_feature_view(
