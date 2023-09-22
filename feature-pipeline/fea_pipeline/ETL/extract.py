@@ -9,7 +9,7 @@ import requests
 
 from yarl import URL
 
-from feature_pipeline import utils, settings
+from fea_pipeline import utils, settings
 
 logger = utils.get_logger(__name__)
 

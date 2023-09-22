@@ -3,8 +3,8 @@ from typing import Optional
 import fire
 import pandas as pd
 
-from feature_pipeline.etl import cleaning, load, extract, validation
-from feature_pipeline import utils
+from fea_pipeline.ETL import cleaning, load, extract, validation
+from fea_pipeline import utils
 
 logger = utils.get_logger(__name__)
 

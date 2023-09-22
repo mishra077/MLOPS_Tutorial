@@ -4,7 +4,7 @@ from great_expectations.core import ExpectationSuite
 from hsfs.feature_group import FeatureGroup
 
 
-from feature_pipeline.settings import SETTINGS
+from fea_pipeline.settings import SETTINGS
 
 def to_feature_store(
         df: pd.DataFrame,
@@ -27,7 +27,7 @@ def to_feature_store(
         version = feature_group_version,
         description = "Hourly Energy Consumption in Denmark. Data is lagged by 15 days.",
         primary_key = ["area", "consumer_type"],
-        event_time = "datetime-utc",
+        event_time = "datetime_utc",
         online_enabled = True,
         expectation_suite = validation_expectation_suite,
     )
@@ -35,7 +35,7 @@ def to_feature_store(
     # Insertion of data into feature store
 
     feature_group.insert(
-        feature = df,
+        features = df,
         overwrite = False,
         write_options = {
             "wait_for_job": True,
