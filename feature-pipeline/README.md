@@ -24,7 +24,7 @@ We are using poetry to create `venv`, but you can also use python default virtua
 
 Firstly, to create `venv` using poetry we need `pyproject.toml` file. You can also create your own `.toml` file using `poetry init` command.
 
-After creation of `pyproject.toml` file, now following these commands we will be able to create `venv`.
+After creation of `pyproject.toml` file, now following these commands to be able to create `venv`.
 ```bash
 poetry install
 # to activate venv
